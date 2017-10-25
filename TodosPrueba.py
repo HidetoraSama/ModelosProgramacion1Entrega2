@@ -19,7 +19,7 @@ class Singleton(object):
 
 class Iclone:
     def shallowClone(self):
-        return self
+        return copy.copy(self)
 
     def deepClone(self):
         return copy.deepcopy(self)
@@ -68,7 +68,7 @@ class Weapon(object):
     def show(self):
         pass
 class Shield(object):
-    protps = 0
+    durr = 0
     def show(self):
         pass
 class Body(object):
@@ -97,17 +97,17 @@ class WeaponKnight(object):
 # Shields (Family B)
 # Product B1
 class ShieldSwordsman(object):
-    protps = 20
+    durr = 20
     def show(self):
         return 'swordsman-shield'
 # Product B2
 class ShieldSorcerer(object):
-    protps = 50
+    durr = 50
     def show(self):
         return 'sorcerer-shield'
 # Product B3
 class ShieldKnight(object):
-    protps = 70
+    durr = 70
     def show(self):
         return 'knight-shield'
 
@@ -160,26 +160,26 @@ influence on the resulting object.'''
 class Character(Iclone):
 
     def __init__(self):
-        self.__body = None
-        self.__weapon  = None
-        self.__shield  = None
-        self.health = 100
+        self.body = None
+        self.weapon  = None
+        self.shield  = None
+        self.health = 1000
 
     def set_body(self, body):
-        self.__body = body
+        self.body = body
 
     def set_weapon(self, weapon):
-        self.__weapon = weapon
+        self.weapon = weapon
 
     def set_shield(self, shield):
-        self.__shield = shield
+        self.shield = shield
 
     def stats(self):
-        return self.health, self.__weapon.dmgps, self.__shield.protps
+        return self.health, self.weapon.dmgps, self.shield.durr
 '''        print ("Health points: " + str(self.health))
         print ("Body shape: " + self.__body.shape)
         print ("Weapon damage per sec: " + str(self.__weapon.dmgps))
-        print ("Shield protection per sec: " + str(self.__shield.protps))'''
+        print ("Shield protection per sec: " + str(self.__shield.durr))'''
 
 '''Creates various parts of a character.
 This class is responsible for constructing all
@@ -208,7 +208,7 @@ class SwordsmanBuilder(Builder):
 
     def get_shield(self):
         shield = Shield()
-        shield.protps = 20 #Algo para sacarlo del otro lado
+        shield.durr = 100 #Algo para sacarlo del otro lado
         return shield
 
 '''Concrete Builder implementation.
@@ -228,7 +228,7 @@ class SorcererBuilder(Builder):
 
     def get_shield(self):
         shield = Shield()
-        shield.protps = 50 #Algo para sacarlo del otro lado
+        shield.durr = 120 #Algo para sacarlo del otro lado
         return shield
 
 '''Concrete Builder implementation.
@@ -248,7 +248,7 @@ class KnightBuilder(Builder):
 
     def get_shield(self):
         shield = Shield()
-        shield.protps = 70 #Algo para sacarlo del otro lado
+        shield.durr = 150 #Algo para sacarlo del otro lado
         return shield
 
 '''if __name__ =="__main__":
@@ -280,7 +280,7 @@ class KnightBuilder(Builder):
     
     print("--=--" * 15)
     print(str(weapon.dmgps))
-    print(str(shield.protps))
+    print(str(shield.durr))
 
     print ("******" * 18)
 
@@ -315,7 +315,7 @@ class KnightBuilder(Builder):
     print ("--=--" * 15)
 
     supershield = Shield()
-    supershield.protps = 1000
+    supershield.durr = 1000
 
     kni2 = knight.deepClone()
     kni3 = kni2.shallowClone()

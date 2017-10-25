@@ -149,10 +149,10 @@ while True:
         screen.blit(bod1w, (155,220))
         screen.blit(bod1s, (115,215))
         b1hp, b1dps, b1pps = swordsman.stats()
-        tts(screen, "Swordsman stats", 80, 120, 15, (255, 211, 74), "seguisb.ttf")
+        tts(screen, currentClass, 80, 120, 15, (255, 211, 74), "seguisb.ttf")
         tts(screen, "HP"+str(b1hp), 80, 140, 13, (255, 211, 74), "seguisb.ttf")
-        tts(screen, "Dps"+str(b1dps), 125, 140, 13, (255, 211, 74), "seguisb.ttf")
-        tts(screen, "Pps"+str(b1pps), 170, 140, 13, (255, 211, 74), "seguisb.ttf")
+        tts(screen, "Dps"+str(b1dps), 127, 140, 13, (255, 211, 74), "seguisb.ttf")
+        tts(screen, "Dur"+str(b1pps), 172, 140, 13, (255, 211, 74), "seguisb.ttf")
 
         bod2 = pygame.image.load(currentClass+"-body.png").convert_alpha()
         bod2w = pygame.image.load(currentClass+"-weapon.png").convert_alpha()
@@ -161,10 +161,10 @@ while True:
         screen.blit(bod2w, (310,220))
         screen.blit(bod2s, (270,215))
         b2hp, b2dps, b2pps = swordsman2.stats()
-        tts(screen, "Swordsman2 stats", 230, 120, 15, (255, 211, 74), "seguisb.ttf")
+        tts(screen, currentClass+"2 stats", 230, 120, 15, (255, 211, 74), "seguisb.ttf")
         tts(screen, "HP"+str(b2hp), 230, 140, 13, (255, 211, 74), "seguisb.ttf")
-        tts(screen, "Dps"+str(b2dps), 275, 140, 13, (255, 211, 74), "seguisb.ttf")
-        tts(screen, "Pps"+str(b2pps), 325, 140, 13, (255, 211, 74), "seguisb.ttf")
+        tts(screen, "Dps"+str(b2dps), 277, 140, 13, (255, 211, 74), "seguisb.ttf")
+        tts(screen, "Dur"+str(b2pps), 327, 140, 13, (255, 211, 74), "seguisb.ttf")
 
         bod3 = pygame.image.load(currentClass+"-body.png").convert_alpha()
         bod3w = pygame.image.load(currentClass+"-weapon.png").convert_alpha()
@@ -173,10 +173,10 @@ while True:
         screen.blit(bod3w, (465,220))
         screen.blit(bod3s, (425,215))
         b3hp, b3dps, b3pps = swordsman3.stats()
-        tts(screen, "Swordsman3 stats", 390, 120, 15, (255, 211, 74), "seguisb.ttf")
+        tts(screen, currentClass+"3 stats", 390, 120, 15, (255, 211, 74), "seguisb.ttf")
         tts(screen, "HP"+str(b3hp), 390, 140, 13, (255, 211, 74), "seguisb.ttf")
-        tts(screen, "Dps"+str(b3dps), 435, 140, 13, (255, 211, 74), "seguisb.ttf")
-        tts(screen, "Pps"+str(b3pps), 480, 140, 13, (255, 211, 74), "seguisb.ttf")
+        tts(screen, "Dps"+str(b3dps), 437, 140, 13, (255, 211, 74), "seguisb.ttf")
+        tts(screen, "Dur"+str(b3pps), 482, 140, 13, (255, 211, 74), "seguisb.ttf")
 
 
         if curdur <= 0:
@@ -210,19 +210,22 @@ while True:
                         sfxGolpe.play()
                         dur=35
                         curdur=10
-                        swordsman.health-=10
+                        swordsman.shield.durr-=10
+                        swordsman.health-=200-swordsman.shield.durr
                         cursor = pygame.image.load("ataque2.png").convert_alpha()
                     elif prect2.collidepoint(pygame.mouse.get_pos()):
                         sfxGolpe.play()
                         dur=35
                         curdur=10
-                        swordsman2.health-=10
+                        swordsman2.shield.durr-=10
+                        swordsman2.health-=200-swordsman2.shield.durr
                         cursor = pygame.image.load("ataque2.png").convert_alpha()
                     elif prect3.collidepoint(pygame.mouse.get_pos()):
                         sfxGolpe.play()
                         dur=35
                         curdur=10
-                        swordsman3.health-=10
+                        swordsman3.shield.durr-=10
+                        swordsman3.health-=200-swordsman3.shield.durr
                         cursor = pygame.image.load("ataque2.png").convert_alpha()
 
 
